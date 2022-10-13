@@ -1,13 +1,14 @@
 <div class="card mb-4  shadow rounded-lg">
   <div class="card-body">
-
-      <h5 class="card-title">Server Status</h5>
-    <p class="card-text">
-      ServerId:  <span class="badge badge-primary">{{server!.id}}</span>
-    </p>
+    <h5 class="card-title">Server Status</h5>
+    <div class="card-text">
+      <div class="btn btn-default mb-2 p-4">
+          <div class="bg-primary" [ngStyle]="{color:'white'}">{{server!.id}}</div>
+      </div>
+    </div>
     <p class="card-text">
       <button  [ngClass]= "{
-        'btn btn-danger': getServerStatus() ==='OFFLINE',
+        'btn btn-danger': getServerStatus() === 'OFFLINE',
         'btn btn-success': getServerStatus() ==='ONLINE' }"
                (click)="toggleStatus()">
        Put {{ getServerStatus() ==='OFFLINE' ? 'Online' : 'Offline'}}
