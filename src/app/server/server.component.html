@@ -16,9 +16,15 @@
 
   </div>
   <div class="card-footer">
-     <div class="card-subtitle">
-       {{ getServerStatus() }}
-       <i class="bi bi-server"></i>
-     </div>
+    <div class="row">
+      <div class="col-sm">
+          <div>{{ getServerStatus() }}</div>
+      </div>
+      <div class="col-sm">
+        <button class="btn">
+          <i class="bi bi-trash" (click)="onDelete(server!.id)"></i>
+        </button>
+      </div>
+    </div>
   </div>
 </div>

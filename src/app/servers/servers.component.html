@@ -23,7 +23,7 @@
     <div class="col-xs-12">
       <ul class="list-group">
        <li class="list-group-item" *ngFor="let server of servers">
-         <app-server [server]="server"></app-server>
+         <app-server (onServerDelete)="onServerDelete($event)" [server]="server"></app-server>
        </li>
       </ul>
     </div>

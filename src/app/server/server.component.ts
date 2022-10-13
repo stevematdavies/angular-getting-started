@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, EventEmitter, Input, Output} from "@angular/core";
 import {Server, ServerStatus} from "../types/server";
 
 
@@ -8,10 +8,15 @@ import {Server, ServerStatus} from "../types/server";
 })
 export class ServerComponent {
 
+  @Output() onServerDelete: EventEmitter<string> = new EventEmitter<string>();
   @Input() server: Server = null
 
   getServerStatus(): ServerStatus {
     return this.server!.status
+  }
+
+  onDelete(serverId: string){
+    this.onServerDelete.emit(serverId)
   }
 
 

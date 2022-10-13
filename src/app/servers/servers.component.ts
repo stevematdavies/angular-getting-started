@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Server, ServerStatus} from "../types/server";
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-servers',
@@ -18,9 +19,13 @@ export class ServersComponent  {
     },3000)
 
     this.servers = [
-      { id: 1, status: ServerStatus.OFFLINE },
-      { id: 2, status: ServerStatus.ONLINE },
+      { id: uuid(), status: ServerStatus.OFFLINE },
+      { id: uuid(), status: ServerStatus.ONLINE },
     ]
+  }
+
+  onServerDelete(serverId: string){
+    this.servers = this.servers.filter((s) => s!.id !== serverId).sort();
   }
 
   onCreateServer(){
@@ -28,7 +33,7 @@ export class ServersComponent  {
       return;
     }
     this.serverCreationStatus = 'Server was created!'
-    this.servers = [...this.servers, { id: this.servers.length + 1, status: ServerStatus.OFFLINE}]
+    this.servers = [...this.servers, { id:uuid(), status: ServerStatus.OFFLINE}]
 
     setTimeout(() => {
       this.serverCreationStatus = 'Waiting for new server to be created';

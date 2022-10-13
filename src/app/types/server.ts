@@ -1,7 +1,8 @@
 export enum ServerStatus { ONLINE ="ONLINE", OFFLINE="OFFLINE"}
 
+
 export interface iServer {
-  id: number,
+  id: string
   status: ServerStatus
 }
 
