@@ -1,2 +1,31 @@
-<app-server></app-server>
-<app-server></app-server>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button
+        [disabled]="!allowNewServers"
+        (click)="onCreateServer()"
+        class="btn btn-primary">
+        Add Server
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <br><br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <p class="">{{ serverCreationStatus }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <ul class="list-group">
+       <li class="list-group-item" *ngFor="let server of servers">
+         <app-server [server]="server"></app-server>
+       </li>
+      </ul>
+    </div>
+  </div>
+</div>

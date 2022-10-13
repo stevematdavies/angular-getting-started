@@ -1,7 +1,24 @@
-<div class="panel panel-default">
-  <div class="panel-body">
-    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-    Server #n
+<div class="card mb-4  shadow rounded-lg">
+  <div class="card-body">
+
+      <h5 class="card-title">Server Status</h5>
+    <p class="card-text">
+      ServerId:  <span class="badge badge-primary">{{server!.id}}</span>
+    </p>
+    <p class="card-text">
+      <button  [ngClass]= "{
+        'btn btn-danger': getServerStatus() ==='OFFLINE',
+        'btn btn-success': getServerStatus() ==='ONLINE' }"
+               (click)="toggleStatus()">
+       Put {{ getServerStatus() ==='OFFLINE' ? 'Online' : 'Offline'}}
+      </button>
+    </p>
+
   </div>
-  <div class="panel-footer">Server is OK</div>
+  <div class="card-footer">
+     <div class="card-subtitle">
+       {{ getServerStatus() }}
+       <i class="bi bi-server"></i>
+     </div>
+  </div>
 </div>
